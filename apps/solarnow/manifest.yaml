@@ -1,0 +1,7 @@
+id: solar-now
+name: Solar Now
+summary: What the panels are making
+desc: Current output in kW and today's total generation, from SolarEdge.
+author: Dude
+fileName: solar_now.star
+packageName: solarnow

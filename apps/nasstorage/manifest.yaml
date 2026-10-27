@@ -1,0 +1,7 @@
+id: nas-storage
+name: NAS Storage
+summary: Pool usage at a glance
+desc: Used and total space on the media array, with a fill bar that turns amber then red as it fills.
+author: Dude
+fileName: nas_storage.star
+packageName: nasstorage

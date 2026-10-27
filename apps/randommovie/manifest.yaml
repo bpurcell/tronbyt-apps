@@ -1,0 +1,7 @@
+id: random-movie
+name: Random Movie
+summary: Something to watch tonight
+desc: Picks a random film from the Jellyfin library and scrolls its title.
+author: Dude
+fileName: random_movie.star
+packageName: randommovie
