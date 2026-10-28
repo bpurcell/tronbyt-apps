@@ -4,7 +4,7 @@ load("http.star", "http")
 URL = "http://192.168.40.36:8091/status.json"
 TTL = 300
 
-def main():
+def main(config):
     resp = http.get(URL, ttl_seconds = TTL)
     if resp.status_code != 200:
         return err("no data")
@@ -13,7 +13,6 @@ def main():
     if not d:
         return err("no movies")
 
-    title = d.get("title", "?")
     year = d.get("year")
 
     return render.Root(
@@ -27,7 +26,7 @@ def main():
                 # Titles never fit in 64px, so scroll them.
                 render.Marquee(
                     width = 64,
-                    child = render.Text(title, color = "#ffffff"),
+                    child = render.Text(d.get("title", "?"), color = "#ffffff"),
                 ),
                 render.Text(str(year) if year else "", color = "#7f8c86", font = "tom-thumb"),
             ],

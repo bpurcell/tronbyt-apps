@@ -4,7 +4,7 @@ load("http.star", "http")
 URL = "http://192.168.40.36:8091/status.json"
 TTL = 300
 
-def main():
+def main(config):
     resp = http.get(URL, ttl_seconds = TTL)
     if resp.status_code != 200:
         return err("no data")
@@ -13,8 +13,6 @@ def main():
     if not d:
         return err("no data")
 
-    used = d.get("used_tb", 0)
-    total = d.get("total_tb", 1)
     pct = d.get("pct", 0)
 
     # Bar turns amber past 70%, red past 85%.
@@ -35,7 +33,9 @@ def main():
             cross_align = "center",
             children = [
                 render.Text("NAS", color = "#7f8c86", font = "tom-thumb"),
-                render.Text("%.1f/%.0fTB" % (used, total), color = "#ffffff"),
+                # Preformatted by the collector: Starlark's % has no
+                # precision modifiers, so no float formatting here.
+                render.Text(d.get("label", "?"), color = "#ffffff"),
                 render.Box(height = 2),
                 render.Stack(children = [
                     render.Box(width = 60, height = 3, color = "#232826"),
