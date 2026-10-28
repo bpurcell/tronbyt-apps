@@ -1,0 +1,7 @@
+id: casco-tide
+name: Casco Tide
+summary: Tide curve for Casco Bay
+desc: Twelve hours of tide around now, with a marker for the current time and the next high or low.
+author: Dude
+fileName: tide.star
+packageName: cascotide
